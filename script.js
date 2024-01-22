@@ -84,10 +84,11 @@ function answer(answerSelection) { //answerSelection wird durch den Button defin
   console.log('Selectetd Number is', numberOfAnswer);
   console.log('Die richtige Antwort ist', question['right_answer'])
   if (numberOfAnswer == question['right_answer']) { // Vergleich 
-    console.log('Richtig, geiler Typ')
+    console.log('Richtig, geiler Typ');
+    document.getElementById(answerSelection).parentNode.classList.add('bg-success');
   } else {
-    console.log('Falsch')
+    console.log('Falsch');
+    document.getElementById(answerSelection).parentNode.classList.add('bg-danger');
+
   }
-
-
 }
