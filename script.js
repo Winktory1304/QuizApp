@@ -61,17 +61,33 @@ let questions = [
 
 let currentQuestion = 0;
 
-function init(){
+function init() {
   document.getElementById('lengthOfQuestions').innerHTML = questions.length;
-showQuestion();
+  showQuestion();
 };
 
 
-function showQuestion(){
-let question = questions[currentQuestion];
-document.getElementById('questionText').innerHTML = question['question'];
-document.getElementById('answer_1').innerHTML = question['answer_1'];
-document.getElementById('answer_2').innerHTML = question['answer_2'];
-document.getElementById('answer_3').innerHTML = question['answer_3'];
-document.getElementById('answer_4').innerHTML = question['answer_4'];
+function showQuestion() {
+  let question = questions[currentQuestion];
+  document.getElementById('questionText').innerHTML = question['question'];
+  document.getElementById('answer_1').innerHTML = question['answer_1'];
+  document.getElementById('answer_2').innerHTML = question['answer_2'];
+  document.getElementById('answer_3').innerHTML = question['answer_3'];
+  document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+
+function answer(answerSelection) { //answerSelection wird durch den Button definiert
+  let question = questions[currentQuestion]; //  questions[0] zB
+  console.log('Selected answer is', answerSelection);
+  let numberOfAnswer = answerSelection.replace(/\D/g, ""); // alles was keine zahl ist wird durch "" ersetzt 
+  console.log('Selectetd Number is', numberOfAnswer);
+  console.log('Die richtige Antwort ist', question['right_answer'])
+  if (numberOfAnswer == question['right_answer']) { // Vergleich 
+    console.log('Richtig, geiler Typ')
+  } else {
+    console.log('Falsch')
+  }
+
+
 }
