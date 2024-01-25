@@ -61,6 +61,7 @@ let questions = [
 
 let currentQuestion = 0;
 
+
 function init() {
   document.getElementById('lengthOfQuestions').innerHTML = questions.length;
   showQuestion();
@@ -68,27 +69,57 @@ function init() {
 
 
 function showQuestion() {
-  let question = questions[currentQuestion];
-  document.getElementById('questionText').innerHTML = question['question'];
-  document.getElementById('answer_1').innerHTML = question['answer_1'];
-  document.getElementById('answer_2').innerHTML = question['answer_2'];
-  document.getElementById('answer_3').innerHTML = question['answer_3'];
-  document.getElementById('answer_4').innerHTML = question['answer_4'];
+  
+  if (currentQuestion >= questions.length) { //ist 7 größer gleich Array (7)
+    document.getElementById('endScreen').style = "";
+    document.getElementById('questionScreen').style = "display: none";
+    document.getElementById('endscreen-max-pages').innerHTML = questions.length;
+  } else {
+    let question = questions[currentQuestion];
+    document.getElementById('actualQuestionPage').innerHTML = currentQuestion + 1;
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+  }
 }
 
 
 function answer(answerSelection) { //answerSelection wird durch den Button definiert
   let question = questions[currentQuestion]; //  questions[0] zB
   console.log('Selected answer is', answerSelection);
-  let numberOfAnswer = answerSelection.replace(/\D/g, ""); // alles was keine zahl ist wird durch "" ersetzt 
+  let numberOfAnswer = answerSelection.replace(/\D/g, ""); // alles was keine zahl ist wird durch "" ersetzt g steht für global, also dem ganzen string
   console.log('Selectetd Number is', numberOfAnswer);
   console.log('Die richtige Antwort ist', question['right_answer'])
+  indexOfRightAnswer = `answer_${question['right_answer']}`
   if (numberOfAnswer == question['right_answer']) { // Vergleich 
     console.log('Richtig, geiler Typ');
-    document.getElementById(answerSelection).parentNode.classList.add('bg-success');
+    document.getElementById(answerSelection).parentNode.classList.add('bg-success'); // parentNode steht für Übergeordnetes Element
   } else {
     console.log('Falsch');
     document.getElementById(answerSelection).parentNode.classList.add('bg-danger');
-
+    document.getElementById(indexOfRightAnswer).parentNode.classList.add('bg-success');
   }
+  document.getElementById('next-question-button').disabled = false; // Button wird freigeschaltet
+}
+
+
+function nextQuestion() {
+  currentQuestion++; //um 1 erhöt
+  document.getElementById('next-question-button').disabled = true; // Button wird gesperrt
+  resetAnswerButtons();
+  init();
+}
+
+//alle Felder zurücksetzen 
+function resetAnswerButtons() {
+  document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }

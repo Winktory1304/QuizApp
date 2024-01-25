@@ -19,5 +19,14 @@ body{
 .quiz-answer-card:hover{
   cursor: pointer;
   background-color: rgb(0, 0, 0, 0.4);
-
+}
+.endScreen-background{
+  background-image: url(/img/tropy.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: 450px;
+  display: flex;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
 }
