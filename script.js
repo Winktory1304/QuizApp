@@ -127,3 +127,11 @@ function resetAnswerButtons() {
   document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
   document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
+
+function restart() {
+  currentQuestion = 0;
+  rightQuestion = 0;
+  init();
+  document.getElementById('questionScreen').style = ""; //Endscreen wird vorborgen
+  document.getElementById('endScreen').style = "display: none"; // Questionscreen wieder da
+}

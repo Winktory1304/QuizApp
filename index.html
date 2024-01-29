@@ -24,6 +24,10 @@
         Das Quiz ist vorbei!!!
         <span> Du hast <b id="corret-answers">xxx</b> Fragen von <b id="endscreen-max-pages">xxx</b> richtig
         </span>
+        <div class="botton-row">
+          <button type="button" class="btn btn-primary" id="restar-button"
+            onclick="restart()">Und nochmal</button>
+        </div>
       </div>
       <div class="card-body question-background" id="questionScreen">
         <h5 class="card-title" id="questionText">Frage</h5>
@@ -51,9 +55,11 @@
             Antwort
           </div>
         </div>
-        <div class="progress" id="progress-bar" role="progressbar">
-          <div class="progress-bar" style="width: 25%">25%</div>
+
+        <div class="progress" role="progressbar">
+          <div class="progress-bar" id="progress-bar" style="width: 25%">25%</div>
         </div>
+
         <div class="question-footer">
           <span>
             <b id="actualQuestionPage">1</b> von <b id="lengthOfQuestions"></b> Fragen
