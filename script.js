@@ -60,6 +60,7 @@ let questions = [
 
 
 let currentQuestion = 0;
+let rightQuestion = 0;
 
 
 function init() {
@@ -69,12 +70,18 @@ function init() {
 
 
 function showQuestion() {
-  
+  //Endscreen
   if (currentQuestion >= questions.length) { //ist 7 größer gleich Array (7)
-    document.getElementById('endScreen').style = "";
+    document.getElementById('endScreen').style = ""; // endscreen wird angezeigt da display none verschwindet
     document.getElementById('questionScreen').style = "display: none";
     document.getElementById('endscreen-max-pages').innerHTML = questions.length;
+    document.getElementById('corret-answers').innerHTML = rightQuestion;
+    //Frage
   } else {
+    let percent = (currentQuestion / questions.length) * 100;
+    let percent2 = percent.toFixed();
+    document.getElementById('progress-bar').innerHTML = `${percent2}%`;//Progressbar Text
+    document.getElementById('progress-bar').style = `width: ${percent2}%`;//Progressbar Breite
     let question = questions[currentQuestion];
     document.getElementById('actualQuestionPage').innerHTML = currentQuestion + 1;
     document.getElementById('questionText').innerHTML = question['question'];
@@ -88,13 +95,10 @@ function showQuestion() {
 
 function answer(answerSelection) { //answerSelection wird durch den Button definiert
   let question = questions[currentQuestion]; //  questions[0] zB
-  console.log('Selected answer is', answerSelection);
   let numberOfAnswer = answerSelection.replace(/\D/g, ""); // alles was keine zahl ist wird durch "" ersetzt g steht für global, also dem ganzen string
-  console.log('Selectetd Number is', numberOfAnswer);
-  console.log('Die richtige Antwort ist', question['right_answer'])
   indexOfRightAnswer = `answer_${question['right_answer']}`
   if (numberOfAnswer == question['right_answer']) { // Vergleich 
-    console.log('Richtig, geiler Typ');
+    rightQuestion++;
     document.getElementById(answerSelection).parentNode.classList.add('bg-success'); // parentNode steht für Übergeordnetes Element
   } else {
     console.log('Falsch');

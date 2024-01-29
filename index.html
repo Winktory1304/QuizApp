@@ -22,7 +22,7 @@
 
       <div class="card-body endScreen-background" id="endScreen" style="display: none;">
         Das Quiz ist vorbei!!!
-        <span> Du hast <b>xxx</b> Fragen von <b id="endscreen-max-pages">xxx</b> richtig
+        <span> Du hast <b id="corret-answers">xxx</b> Fragen von <b id="endscreen-max-pages">xxx</b> richtig
         </span>
       </div>
       <div class="card-body question-background" id="questionScreen">
@@ -51,7 +51,9 @@
             Antwort
           </div>
         </div>
-
+        <div class="progress" id="progress-bar" role="progressbar">
+          <div class="progress-bar" style="width: 25%">25%</div>
+        </div>
         <div class="question-footer">
           <span>
             <b id="actualQuestionPage">1</b> von <b id="lengthOfQuestions"></b> Fragen
