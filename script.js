@@ -61,6 +61,8 @@ let questions = [
 
 let currentQuestion = 0;
 let rightQuestion = 0;
+let Audio_success = new Audio('./audio/success_sound.mp3');
+let Audio_wrong = new Audio('./audio/wrong_sound.mp3');
 
 
 function init() {
@@ -98,12 +100,15 @@ function answer(answerSelection) { //answerSelection wird durch den Button defin
   let numberOfAnswer = answerSelection.replace(/\D/g, ""); // alles was keine zahl ist wird durch "" ersetzt g steht für global, also dem ganzen string
   indexOfRightAnswer = `answer_${question['right_answer']}`
   if (numberOfAnswer == question['right_answer']) { // Vergleich 
+    Audio_success.play();
     rightQuestion++;
     document.getElementById(answerSelection).parentNode.classList.add('bg-success'); // parentNode steht für Übergeordnetes Element
   } else {
+    Audio_wrong.play();
     console.log('Falsch');
     document.getElementById(answerSelection).parentNode.classList.add('bg-danger');
     document.getElementById(indexOfRightAnswer).parentNode.classList.add('bg-success');
+
   }
   document.getElementById('next-question-button').disabled = false; // Button wird freigeschaltet
 }
