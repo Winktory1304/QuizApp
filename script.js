@@ -74,10 +74,7 @@ function init() {
 function showQuestion() {
   //Endscreen
   if (currentQuestion >= questions.length) { //ist 7 größer gleich Array (7)
-    document.getElementById('endScreen').style = ""; // endscreen wird angezeigt da display none verschwindet
-    document.getElementById('questionScreen').style = "display: none";
-    document.getElementById('endscreen-max-pages').innerHTML = questions.length;
-    document.getElementById('corret-answers').innerHTML = rightQuestion;
+    showEndScreen()
     //Frage
   } else {
     let percent = (currentQuestion / questions.length) * 100;
@@ -94,6 +91,13 @@ function showQuestion() {
   }
 }
 
+
+function showEndScreen(){
+  document.getElementById('endScreen').style = ""; // endscreen wird angezeigt da display none verschwindet
+    document.getElementById('questionScreen').style = "display: none";
+    document.getElementById('endscreen-max-pages').innerHTML = questions.length;
+    document.getElementById('corret-answers').innerHTML = rightQuestion;
+}
 
 function answer(answerSelection) { //answerSelection wird durch den Button definiert
   let question = questions[currentQuestion]; //  questions[0] zB
