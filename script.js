@@ -73,30 +73,45 @@ function init() {
 
 function showQuestion() {
   //Endscreen
-  if (currentQuestion >= questions.length) { //ist 7 größer gleich Array (7)
+  if (quizIsOver()) { //ist 7 größer gleich Array (7)
     showEndScreen()
     //Frage
   } else {
-    let percent = (currentQuestion / questions.length) * 100;
-    let percent2 = percent.toFixed();
-    document.getElementById('progress-bar').innerHTML = `${percent2}%`;//Progressbar Text
-    document.getElementById('progress-bar').style = `width: ${percent2}%`;//Progressbar Breite
-    let question = questions[currentQuestion];
-    document.getElementById('actualQuestionPage').innerHTML = currentQuestion + 1;
-    document.getElementById('questionText').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    progressbar();
+    newQuestion();
   }
 }
 
 
-function showEndScreen(){
+function newQuestion() {
+  let question = questions[currentQuestion];
+  document.getElementById('actualQuestionPage').innerHTML = currentQuestion + 1;
+  document.getElementById('questionText').innerHTML = question['question'];
+  document.getElementById('answer_1').innerHTML = question['answer_1'];
+  document.getElementById('answer_2').innerHTML = question['answer_2'];
+  document.getElementById('answer_3').innerHTML = question['answer_3'];
+  document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+function progressbar() {
+  let percent = (currentQuestion / questions.length) * 100;
+  let percent2 = percent.toFixed();
+  document.getElementById('progress-bar').innerHTML = `${percent2}%`;//Progressbar Text
+  document.getElementById('progress-bar').style = `width: ${percent2}%`;//Progressbar Breite
+}
+
+function quizIsOver() {
+  return currentQuestion >= questions.length;
+ 
+
+}
+
+
+function showEndScreen() {
   document.getElementById('endScreen').style = ""; // endscreen wird angezeigt da display none verschwindet
-    document.getElementById('questionScreen').style = "display: none";
-    document.getElementById('endscreen-max-pages').innerHTML = questions.length;
-    document.getElementById('corret-answers').innerHTML = rightQuestion;
+  document.getElementById('questionScreen').style = "display: none";
+  document.getElementById('endscreen-max-pages').innerHTML = questions.length;
+  document.getElementById('corret-answers').innerHTML = rightQuestion;
 }
 
 function answer(answerSelection) { //answerSelection wird durch den Button definiert

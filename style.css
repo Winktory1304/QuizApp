@@ -7,6 +7,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+.side-container{
+  height: 100px;
+  width: 250px;
+  background-color: gray;
+}
 .question-footer{
   display: flex;
   justify-content: space-between;
@@ -35,4 +40,11 @@ body{
   display: flex;
   justify-content: center;
   margin-top: 70%;
+  }
+  .col-container{
+    display: table;
+    width: 50%;
+  }
+  .col{
+    display: table-cell;
   }

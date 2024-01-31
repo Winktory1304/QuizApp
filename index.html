@@ -17,58 +17,62 @@
     </div>
   </nav>
   <div class="container">
+    <div class="col-container">
+      <div class="side-container col"></div>
+      <div class="card quiz-card col">
 
-    <div class="card quiz-card">
-
-      <div class="card-body endScreen-background" id="endScreen" style="display: none;">
-        Das Quiz ist vorbei!!!
-        <span> Du hast <b id="corret-answers">xxx</b> Fragen von <b id="endscreen-max-pages">xxx</b> richtig
-        </span>
-        <div class="botton-row">
-          <button type="button" class="btn btn-primary" id="restar-button"
-            onclick="restart()">Und nochmal</button>
-        </div>
-      </div>
-      <div class="card-body question-background" id="questionScreen">
-        <h5 class="card-title" id="questionText">Frage</h5>
-
-        <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">
-          <div class="card-body" id="answer_1">
-            Antwort
-          </div>
-        </div>
-
-        <div class="card mb-2 quiz-answer-card" onclick="answer('answer_2')">
-          <div class="card-body" id="answer_2">
-            Antwort
-          </div>
-        </div>
-
-        <div class="card mb-2 quiz-answer-card" onclick="answer('answer_3')">
-          <div class="card-body" id="answer_3">
-            Antwort
-          </div>
-        </div>
-
-        <div class="card mb-2 quiz-answer-card" onclick="answer('answer_4')">
-          <div class="card-body" id="answer_4">
-            Antwort
-          </div>
-        </div>
-
-        <div class="progress" role="progressbar">
-          <div class="progress-bar" id="progress-bar" style="width: 25%">25%</div>
-        </div>
-
-        <div class="question-footer">
-          <span>
-            <b id="actualQuestionPage">1</b> von <b id="lengthOfQuestions"></b> Fragen
+        <div class="card-body endScreen-background" id="endScreen" style="display: none;">
+          Das Quiz ist vorbei!!!
+          <span> Du hast <b id="corret-answers">xxx</b> Fragen von <b id="endscreen-max-pages">xxx</b> richtig
           </span>
-          <button type="button" class="btn btn-primary" id="next-question-button" disabled
-            onclick="nextQuestion()">Nächste Frage</button>
+          <div class="botton-row">
+            <button type="button" class="btn btn-primary" id="restar-button" onclick="restart()">Und nochmal</button>
+          </div>
         </div>
+        <div class="card-body question-background" id="questionScreen">
+          <h5 class="card-title" id="questionText">Frage</h5>
+
+          <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">
+            <div class="card-body" id="answer_1">
+              Antwort
+            </div>
+          </div>
+
+          <div class="card mb-2 quiz-answer-card" onclick="answer('answer_2')">
+            <div class="card-body" id="answer_2">
+              Antwort
+            </div>
+          </div>
+
+          <div class="card mb-2 quiz-answer-card" onclick="answer('answer_3')">
+            <div class="card-body" id="answer_3">
+              Antwort
+            </div>
+          </div>
+
+          <div class="card mb-2 quiz-answer-card" onclick="answer('answer_4')">
+            <div class="card-body" id="answer_4">
+              Antwort
+            </div>
+          </div>
+
+          <div class="progress" role="progressbar">
+            <div class="progress-bar" id="progress-bar" style="width: 25%">25%</div>
+          </div>
+
+          <div class="question-footer">
+            <span>
+              <b id="actualQuestionPage">1</b> von <b id="lengthOfQuestions"></b> Fragen
+            </span>
+            <button type="button" class="btn btn-primary" id="next-question-button" disabled
+              onclick="nextQuestion()">Nächste Frage</button>
+          </div>
+        </div>
+
+
       </div>
     </div>
+
 
   </div>
 </body>
